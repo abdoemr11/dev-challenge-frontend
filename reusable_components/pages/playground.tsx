@@ -41,6 +41,14 @@ export default function Playground() {
                 <Button color="danger">Default</Button>
 
             </Row>
+            <h2>Colors with Outline</h2>
+            <Row>
+                <Button color="default" variant='outline'>Default</Button>
+                <Button color="primary" variant='outline'>Default</Button>
+                <Button color="secondary" variant='outline'>Default</Button>
+                <Button color="danger" variant='outline'>Default</Button>
+
+            </Row>
         </div>
     )
 }

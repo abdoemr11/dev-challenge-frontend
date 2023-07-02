@@ -8,20 +8,21 @@ interface btnProps {
     startIcon?: string
     endIcon?: string
     size?: 'sm' | 'md' | 'lg',
-    color?: 'default' | 'primary' | 'secondary' | 'danger  '
+    color?: 'default' | 'primary' | 'secondary' | 'danger'
 }
 
 export default function Buttton({ children, variant, disableShadow, disabled, startIcon, endIcon, size, color }: btnProps) {
     let appliedStyle: Array<string> = [];
+    if (color)
+        appliedStyle.push(color)
     appliedStyle.push('btn')
     if (variant)
-        appliedStyle[0] = variant
+        appliedStyle[1] = variant
     if (disabled)
         appliedStyle.push('disabled')
     if (size)
         appliedStyle.push(size)
-    if (color)
-        appliedStyle.push(color)
+
     return (
         <button className={appliedStyle.join(' ')} disabled={disabled}>
             {startIcon ? <span className="material-icons">{startIcon}</span> : null}
