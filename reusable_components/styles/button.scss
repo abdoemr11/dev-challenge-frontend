@@ -1,4 +1,6 @@
-%reset-btn {
+@use 'sass:color';
+
+.btn {
     border: none;
     outline: none;
     background: none;
@@ -21,12 +23,25 @@
     }
 }
 
-.btn,
-.outline,
-.text {
-    @extend %reset-btn;
+$colors : ("default": ("text": #3F3F3F,
+        "back": #E0E0E0,
+        "shadow": rgba(51, 51, 51, 0.20),
+        "hover-back": #AEAEAE),
+    "primary": ("text": #fff,
+        "back": #2962FF,
+        "shadow": rgba(41, 98, 255, 0.20),
+        "hover-back": #0039CB),
+    "secondary": ("text": #fff,
+        "back": #455A64,
+        "shadow": rgba(69, 90, 100, 0.20),
+        "hover-back": #1C313A),
+    "danger": ("text": #fff,
+        "back": #D32F2F,
+        "shadow": rgba(211, 47, 47, 0.20),
+        "hover-back": #9A0007),
 
-}
+);
+$variants : ("normal", "outline", "text");
 
 .btn {
     border-radius: 0.375rem;
@@ -50,22 +65,73 @@
 
 }
 
-.outline {
-    border-radius: 0.375rem;
-    border: 1px solid #3D5AFE;
+@each $vari,
+$color-list in $colors {
 
-    background: none;
-    color: #3D5AFE;
+    .#{$vari} {
+        background: map-get($color-list, "back");
+        box-shadow: 0px 2px 3px 0px map-get($color-list, "shadow");
+        color: map-get($color-list, "text");
 
+        &:focus,
+        &:hover {
+            background: map-get($color-list, "hover-back");
+            color: map-get($color-list, "text");
 
-    &:hover,
-    &.hover,
-    &:focus {
-        border-radius: 0.375rem;
-        border: 1px solid #3D5AFE;
-        background: rgba(41, 98, 255, 0.10);
-        color: #3D5AFE;
+        }
+    }
+}
 
+//for outline
+@each $vari,
+$color-list in $colors {
+
+    .#{$vari}-outline {
+        background: none;
+        color: map-get($color-list, "back");
+        border: 1px solid map-get($color-list, "back");
+        box-shadow: none;
+
+        @if($vari)=='default' {
+            color: #3F3F3F;
+            border-color: #3F3F3F;
+        }
+
+        &:focus,
+        &:hover {
+            $back-color: map-get($color-list, "hover-back");
+            $new-color: color.adjust($back-color, $alpha: -.7);
+            background-color: $new-color;
+            // color: map-get($color-list, "text");
+            box-shadow: none;
+
+        }
+    }
+}
+
+//text 
+@each $vari,
+$color-list in $colors {
+
+    .#{$vari}-text {
+        background: none;
+        color: map-get($color-list, "back");
+        border: none;
+        box-shadow: none;
+
+        @if($vari)=='default' {
+            color: #3F3F3F;
+        }
+
+        &:focus,
+        &:hover {
+            $back-color: map-get($color-list, "hover-back");
+            $new-color: color.adjust($back-color, $alpha: -.7);
+            background-color: $new-color;
+            // color: map-get($color-list, "text");
+            box-shadow: none;
+
+        }
     }
 }
 
@@ -113,38 +179,3 @@
 }
 
 //colors 
-$colors : ("default": ("text": #3F3F3F,
-        "back": #E0E0E0,
-        "shadow": rgba(51, 51, 51, 0.20),
-        "hover-back": #AEAEAE),
-    "primary": ("text": #fff,
-        "back": #2962FF,
-        "shadow": rgba(41, 98, 255, 0.20),
-        "hover-back": #0039CB),
-    "secondary": ("text": #fff,
-        "back": #2962FF,
-        "shadow": rgba(69, 90, 100, 0.20),
-        "hover-back": #1C313A),
-    "danger": ("text": #fff,
-        "back": #D32F2F,
-        "shadow": rgba(211, 47, 47, 0.20),
-        "hover-back": #9A0007),
-
-);
-
-@each $vari,
-$color-list in $colors {
-
-    .#{$vari} {
-        background: map-get($color-list, "back");
-        box-shadow: 0px 2px 3px 0px map-get($color-list, "shadow");
-        color: map-get($color-list, "text");
-
-        &:focus,
-        &:hover {
-            background: map-get($color-list, "hover-back");
-            color: map-get($color-list, "text");
-
-        }
-    }
-}

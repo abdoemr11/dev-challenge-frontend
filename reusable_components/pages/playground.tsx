@@ -26,10 +26,10 @@ export default function Playground() {
                 <Button startIcon='home'>Default</Button>
                 <Button endIcon='home'>Default</Button>
             </Row>
-            <h2>Disabled</h2>
+            <h2>various sizes</h2>
 
             <Row>
-                <Button disabled size="sm">Disabled</Button>
+                <Button disabled size="sm" color='primary'>Disabled</Button>
                 <Button disabled size="md">Disabled</Button>
                 <Button disabled size="lg">Disabled</Button>
             </Row>
@@ -47,6 +47,14 @@ export default function Playground() {
                 <Button color="primary" variant='outline'>Default</Button>
                 <Button color="secondary" variant='outline'>Default</Button>
                 <Button color="danger" variant='outline'>Default</Button>
+
+            </Row>
+            <h2>Colors with text</h2>
+            <Row>
+                <Button color="default" variant='text'>Default</Button>
+                <Button color="primary" variant='text'>Default</Button>
+                <Button color="secondary" variant='text'>Default</Button>
+                <Button color="danger" variant='text'>Default</Button>
 
             </Row>
         </div>

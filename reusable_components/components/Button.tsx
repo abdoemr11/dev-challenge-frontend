@@ -13,11 +13,15 @@ interface btnProps {
 
 export default function Buttton({ children, variant, disableShadow, disabled, startIcon, endIcon, size, color }: btnProps) {
     let appliedStyle: Array<string> = [];
-    if (color)
-        appliedStyle.push(color)
     appliedStyle.push('btn')
+
+    let colorOutline = 'default';
+    if (color)
+        colorOutline = color
     if (variant)
-        appliedStyle[1] = variant
+        colorOutline += `-${variant}`
+    appliedStyle.push(colorOutline);
+
     if (disabled)
         appliedStyle.push('disabled')
     if (size)
