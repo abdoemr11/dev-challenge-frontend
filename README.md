@@ -1,3 +1,6 @@
+# Front End Challenges
+This is my walkthrough in The front end challenges by [devchallenges](https://devchallenges.io/paths/front-end-developer). You are givin user stories and figma design and you have the freedom to choose whatever stack to accomplich the task. 
+There are 8 challenges.
 ## 1, 2 Reuseable Components
 - I used next js to get it's feeling, it support many things out of the box like font optimization.
 - First I tried to use module styling but it didn't work with multiple classes I don't why. 
