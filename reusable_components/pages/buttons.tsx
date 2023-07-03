@@ -1,5 +1,5 @@
 import Button from '@/components/Button';
-export default function Playground() {
+export default function buttons() {
     return (
         <div style={{
             margin: '10rem auto',
