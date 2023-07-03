@@ -15,6 +15,17 @@ export default function inputs() {
                 <Input error />
                 <Input helperText='Write here you fool' />
                 <Input helperText='Write here you fool' error />
+                <Input startIcon='phone' />
+                <Input endIcon='lock' />
+                <Input endIcon='home' startIcon='home' />
+                <Input value='abdo' />
+                <Input size="sm" />
+                <Input size="md" />
+                <Input size="md" fullwidth />
+                <Input size="sm" fullwidth />
+                <Input multiline row="4" column="10" />
+                <Input multiline row="4" column="20" />
+
             </Row>
 
         </div>

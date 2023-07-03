@@ -2,6 +2,11 @@
 
     color: var(--gray-1, #333);
 
+    &.fullwidth {
+        width: 100%;
+    }
+
+
     label {
         font-size: 0.75rem;
 
@@ -20,11 +25,27 @@
     }
 
     .input-stack {
-        width: 12.5rem;
-        height: 3.5rem;
         flex-shrink: 0;
         margin-top: -.5rem;
+        position: relative;
 
+        //sizes
+        &.input-sm {
+            width: 12.5rem;
+
+            height: 2.5rem;
+
+        }
+
+        &.input-md {
+            width: 13.5rem;
+            height: 3.5rem;
+
+        }
+
+        &.input-lg {
+            width: 100%;
+        }
 
         input {
             width: 100%;
@@ -33,7 +54,7 @@
 
             border-radius: 0.5rem;
             border: none;
-            padding: .75rem 1.25rem;
+            padding: .75rem 2rem;
             outline: none;
 
             &::placeholder {
@@ -66,6 +87,22 @@
             }
 
         }
+
+        .icon-start,
+        .icon-end {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #828282
+        }
+
+        .icon-start {
+            left: .25rem;
+        }
+
+        .icon-end {
+            right: .25rem;
+        }
     }
 
     .helper-text {
@@ -79,5 +116,24 @@
         &.helper-error {
             color: #D32F2F
         }
+    }
+
+    textarea {
+        resize: none;
+        display: block;
+        border-radius: 0.5rem;
+        border: none;
+        padding: .75rem 1.25rem;
+        outline: none;
+        border: 1px solid var(--gray-3, #828282);
+        font-size: 0.875rem;
+        font-weight: 500;
+
+        &::placeholder {
+            font-size: 0.875rem;
+            font-weight: 500;
+
+        }
+
     }
 }
