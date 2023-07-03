@@ -11,4 +11,6 @@ There are 8 challenges.
 - So it's a matter of playing with sass it seems so. Let's find out.
 - DONE -evil laugh-
 ## 3 Windbnb 
-- Return to my old react but with tailwind this time    
+- Return to my old react but with tailwind this time.
+- For the search modal I blindly started with the moblie without looking at the desktop version. Unfortnately there are  details that I overlooked like the type of search input field. I had to redesined again carefully. 
+- The guest types: children and adults, I don't know what is the difference. I may treat them equally    
