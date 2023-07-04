@@ -6,14 +6,15 @@ import { Stay } from "./types"
 import SearchModal from "./components/SearchModal"
 function App() {
   const [stays, setStays] = useState<Stay[]>([])
+  const [isModalVisible, setModalVisible] = useState<boolean>(false)
   useEffect(() => {
     setStays(getStays())
   }, [])
   return (
     <>
-      <Header />
+      <Header setModalVisible={setModalVisible} />
       <Gallery stays={stays} />
-      <SearchModal />
+      <SearchModal isModalVisible={isModalVisible} setModalVisible={setModalVisible} />
     </>
   )
 }
