@@ -3,8 +3,11 @@ interface InputProps {
     placeholder: string,
     raduisLocation: 't' | 'b',
     setFocus?: any
+    value: string | number
+    setValue: any
+    type?: string
 }
-export default function SearchInput({ label, placeholder, raduisLocation, setFocus }: InputProps) {
+export default function SearchInput({ label, placeholder, raduisLocation, setFocus, value, setValue, type }: InputProps) {
 
     return (
         <div className="  relative bg-white ">
@@ -16,8 +19,11 @@ export default function SearchInput({ label, placeholder, raduisLocation, setFoc
                                 text-sm font-normal h-full w-full border outline-1`}
                 placeholder={placeholder}
                 id={label}
+                type={type ? type : "text"}
                 onFocus={() => { setFocus(true) }}
-                onBlur={() => { setFocus(false) }}
+                onBlur={() => { setTimeout(() => setFocus(false), 100) }}
+                value={value}
+                onChange={(e) => { setValue(e.target.value) }}
             />
         </div>
     )
