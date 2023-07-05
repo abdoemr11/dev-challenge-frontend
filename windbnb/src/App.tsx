@@ -2,7 +2,6 @@ import Gallery from "./components/Gallery";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import { getStays } from "./services/stays";
-import { Stay } from "./types";
 import { Helmet } from "react-helmet";
 import SearchModal from "./components/SearchModal";
 import useStayStore from "./services/store";
@@ -28,7 +27,7 @@ function App() {
                 <link
                     rel="preconnect"
                     href="https://fonts.gstatic.com"
-                    crossorigin
+                    crossOrigin="anonymous"
                 />
                 <link
                     href="https://fonts.googleapis.com/icon?family=Material+Icons"
