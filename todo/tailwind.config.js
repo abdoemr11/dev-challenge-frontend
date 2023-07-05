@@ -9,6 +9,9 @@ export default {
       container: {
         'center': true,
         'padding': '1rem'
+      },
+      colors : {
+        'cblue': '#2F80ED'
       }
     },
   },
