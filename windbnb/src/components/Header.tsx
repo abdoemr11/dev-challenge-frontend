@@ -7,21 +7,23 @@ export default function Header({ setModalVisible }: { setModalVisible: any }) {
         state.searchGuest,
     ]);
     return (
-        <header className="flex justify-between align-item items-center flex-wrap container  py-6 mb-3 gap-y-10   ">
-            <img className="max-w-full" src={logo} alt="windbnb" />
+        <header className="align-item container mb-3 flex flex-wrap items-center  justify-between gap-y-10 py-6   ">
+            <a href="/">
+                <img className="max-w-full" src={logo} alt="windbnb" />
+            </a>
             <div
-                className=" rounded-2xl  text-xs sm:text-base shadow-header flex gap-x-[2px] font-[Mulish] items-center bg-[#f2f2f2]"
+                className=" flex  items-center gap-x-[2px] rounded-2xl bg-[#f2f2f2] font-[Mulish] text-xs shadow-header sm:text-base"
                 onClick={() => {
                     setModalVisible(true);
                 }}
             >
-                <p className=" rounded-l-2xl text-textPrimary  bg-white py-4 px-3">
+                <p className=" rounded-l-2xl bg-white  px-3 py-4 text-textPrimary">
                     {searchCity || "Search for City"}
                 </p>
-                <p className="bg-white text-[#bdbdbd] py-4 px-3">
+                <p className="bg-white px-3 py-4 text-[#bdbdbd]">
                     {searchGuest ? searchGuest + " Guests" : "Add guests"}
                 </p>
-                <p className=" h-full material-icons rounded-r-2xl !text-base text-[#EB5757E5] bg-white py-3 sm:py-4 px-3">
+                <p className=" material-icons h-full rounded-r-2xl bg-white px-3 py-3 !text-base text-[#EB5757E5] sm:py-4">
                     <span className=" !text-sm text-[#EB5757E5] ">search</span>
                 </p>
             </div>

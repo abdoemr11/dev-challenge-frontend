@@ -5,6 +5,7 @@ import { getStays } from "./services/stays";
 import { Helmet } from "react-helmet";
 import SearchModal from "./components/SearchModal";
 import useStayStore from "./services/store";
+import favicon from "./assets/logo.png";
 function App() {
     const setStays = useStayStore((state) => state.setStays);
     const filterdStays = useStayStore((state) => state.filteredStays);
@@ -18,11 +19,7 @@ function App() {
         <>
             <Helmet>
                 <title>Windbnb</title>
-                <link
-                    rel="shortcut icon"
-                    href="/public/triangleLogo.png"
-                    type="image/x-icon"
-                />
+                <link rel="shortcut icon" href={favicon} type="image/x-icon" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link
                     rel="preconnect"
