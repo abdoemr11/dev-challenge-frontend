@@ -21,7 +21,7 @@ export default function CompletedList({
                         <TodoItem todo={todo} />
                         <span
                             className="material-icons-outlined cursor-pointer"
-                            onClick={(id) => removeTodo(todo.id)}
+                            onClick={() => removeTodo(todo.id)}
                         >
                             delete
                         </span>

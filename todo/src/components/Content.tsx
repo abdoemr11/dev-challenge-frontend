@@ -2,20 +2,8 @@ import { useEffect, useState } from "react";
 import CompletedList from "./CompletedList";
 import { ListType, Todo } from "../types";
 import NonCompletedList from "./NonCompletedList";
-const initalTodo: Todo[] = [
-    { text: "Buy groceries", isFinished: false, id: 1 },
-    { text: "Clean the house", isFinished: false, id: 2 },
-    { text: "Go for a run", isFinished: false, id: 3 },
-    { text: "Finish the report", isFinished: false, id: 4 },
-    { text: "Schedule a meeting", isFinished: false, id: 5 },
-    { text: "Pay the bills", isFinished: false, id: 6 },
-    { text: "Read a book", isFinished: false, id: 7 },
-    { text: "Call a friend", isFinished: false, id: 8 },
-    { text: "Organize the closet", isFinished: false, id: 9 },
-    { text: "Plan a vacation", isFinished: false, id: 10 },
-];
 
-function isValidTodos(data: any): data is Todo[] {
+function isValidTodos(data: unknown): data is Todo[] {
     return (
         Array.isArray(data) &&
         data.every(

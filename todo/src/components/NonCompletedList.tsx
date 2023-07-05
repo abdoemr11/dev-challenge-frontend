@@ -1,5 +1,5 @@
 import { Todo } from "../types";
-import { useState, FormEventHandler } from "react";
+import { useState } from "react";
 import TodoItem from "./TodoItem";
 
 export default function NonCompletedList({
