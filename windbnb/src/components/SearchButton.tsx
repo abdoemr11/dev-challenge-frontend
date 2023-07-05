@@ -3,8 +3,10 @@ import useStayStore from "../services/store";
 
 export default function SearchButton({
     additionalStyle,
+    onClick,
 }: {
     additionalStyle: string;
+    onClick: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
     const setFilterdStays = useStayStore((state) => state.setFilterdStays);
     const [stays, searchCity, searchGuest] = useStayStore(
@@ -20,16 +22,19 @@ export default function SearchButton({
             );
         });
         setFilterdStays(newStays);
+        setTimeout(() => {
+            onClick(false);
+        }, 500);
     };
     return (
         <button
             className={
-                " block bg-cred text-[#f2f2f2] text-sm font-bold px-6 py-4 rounded-2xl shadow-header mx-auto mt-auto" +
+                " mx-auto mt-auto block rounded-2xl bg-cred px-6 py-4 text-sm font-bold text-[#f2f2f2] shadow-header" +
                 additionalStyle
             }
             onClick={filterdStays}
         >
-            <span className="material-icons mr-2 text-white align-middle">
+            <span className="material-icons mr-2 align-middle text-white">
                 search
             </span>
             Search
