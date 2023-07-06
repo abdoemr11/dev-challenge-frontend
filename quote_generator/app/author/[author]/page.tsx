@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: { author: string } }) {
     console.log(auhtorQuotes);
     return (
         <div className="space-y-8">
-            {auhtorQuotes.map((q) => (
+            {auhtorQuotes.map((q: any) => (
                 <Quote quoteText={q.quoteText} />
             ))}
         </div>
