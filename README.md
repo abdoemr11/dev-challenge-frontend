@@ -14,3 +14,8 @@ There are 8 challenges.
 - Return to my old react but with tailwind this time.
 - For the search modal I blindly started with the moblie without looking at the desktop version. Unfortnately there are  details that I overlooked like the type of search input field. I had to redesined again carefully. 
 - The guest types: children and adults, I don't know what is the difference. I may treat them equally    
+## 4 Todo 
+- Nothing fancy
+
+## 5 Quote Generator
+
