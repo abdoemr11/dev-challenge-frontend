@@ -19,3 +19,9 @@ There are 8 challenges.
 
 ## 5 Quote Generator
 
+## 6 Country Quiz
+- type script enforce validating data from api however I don't know the best way to achive this. Currently I'm using type predicate. 
+- I finished the main functionality, I was thinking of adding the ability to share the score
+- I should store the countries in local storage. 
+- 
+
