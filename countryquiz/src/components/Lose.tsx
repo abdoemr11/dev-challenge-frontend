@@ -1,7 +1,6 @@
 import winner from "../assets/undraw_winners_ao2o 2.svg";
 import useScreenshot from "../hooks/useScreenShot";
 import useCountryStore from "../store";
-import { createRef } from "react";
 
 export default function Lose() {
     const score = useCountryStore((state) => state.score);

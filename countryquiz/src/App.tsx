@@ -2,7 +2,7 @@ import Lose from "./components/Lose";
 import Questions from "./components/Questions";
 import useCountryStore from "./store";
 import { useEffect } from "react";
-import { Country, isCountry } from "./types";
+import { Country, RestCountry, isCountry } from "./types";
 import axios from "axios";
 import { Helmet, HelmetData } from "react-helmet-async";
 
@@ -15,7 +15,8 @@ const getCountries = async (): Promise<Country[]> => {
         const unvalidatedData: unknown[] = res.data;
 
         if (!Array.isArray(unvalidatedData)) return [];
-        const validatedCountries: Country[] = unvalidatedData.filter(isCountry);
+        const validatedCountries: RestCountry[] =
+            unvalidatedData.filter(isCountry);
 
         const cleanCountries = validatedCountries.map((c) => ({
             name: c.name.common,
@@ -33,7 +34,6 @@ const getCountries = async (): Promise<Country[]> => {
 function App() {
     const gameStatus = useCountryStore((state) => state.gameStatus);
     const setCountries = useCountryStore((state) => state.setCountries);
-    const setRoundQuestion = useCountryStore((state) => state.setRoundQuestion);
     const countries = useCountryStore((state) => state.allCountries);
     useEffect(() => {
         const fetchCountries = async (): Promise<void> => {
@@ -42,6 +42,8 @@ function App() {
                 const parsedCountries: Country[] = JSON.parse(
                     countriesFromLocalStorage
                 ) as Country[];
+                console.log(countriesFromLocalStorage);
+
                 setCountries(parsedCountries);
             } else {
                 const fetchedCountries: Country[] = await getCountries();

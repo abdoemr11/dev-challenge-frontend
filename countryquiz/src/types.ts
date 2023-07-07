@@ -3,14 +3,15 @@ export interface Country {
     capital: string
     flag: string
 }
+export interface RestCountry {
+  name: {common: string}
+  capital: string[]
+  flags: {svg: string}
+}
+export const isCountry = (data: unknown): data is RestCountry => {
 
-export const isCountry = (data: unknown): data is Country => {
+  return typeof (data as RestCountry)?.name?.common ==='string' && (data as RestCountry)?.capital &&
+  typeof (data as RestCountry)?.capital[0] ==='string' &&
+  typeof (data as RestCountry)?.flags?.svg ==='string' 
 
-    
-    return (
-        data.name && data.capital && data.flags && data.flags.svg && data.name.common &&
-      typeof data.name.common === 'string' &&
-      typeof data.capital[0] === 'string' &&
-      typeof data.flags.svg === 'string'
-    );
   };

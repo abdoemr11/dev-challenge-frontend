@@ -28,7 +28,7 @@ const useScreenshot = () => {
     link.click();
   };
 
-  return [ targetRef, takeScreenshot ];
+  return [ targetRef, takeScreenshot ] as const;
 };
 
 export default useScreenshot
