@@ -10,7 +10,6 @@ export default function Questions() {
 
     const randomIndex = Math.floor(Math.random() * roundCountries.length);
     console.log("From question", roundCountries);
-    console.log("From question", roundCountries);
 
     if (roundCountries.length == 0 || !roundCountries[0]) return <p>loading</p>;
     return (

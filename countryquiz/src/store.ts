@@ -19,12 +19,7 @@ const useCountryStore = create<StoreType>()(devtools(set => ({
     gameStatus: 'playing',
     score: 0,
     setCountries: (countries)=> set((state) => {
-        const roundCountries: Country[] = [];
-        for (let i = 0; i < 4; i++) {
-            const randomIndex = Math.floor(Math.random() * state.allCountries.length);
-            roundCountries.push(state.allCountries[randomIndex]);
-        }
-        return ({...state, allCountries: countries, roundQuestions : roundCountries})
+        return ({...state, allCountries: countries})
     }),
     restart: ()=> set(state=> ({...state, score: 0, gameStatus: 'playing'})),
     lose: ()=> set(state=> ({...state, gameStatus: 'lose'})),
@@ -33,6 +28,8 @@ const useCountryStore = create<StoreType>()(devtools(set => ({
         const newRoundCountries: Country[] = [];
         for (let i = 0; i < 4; i++) {
             const randomIndex = Math.floor(Math.random() * state.allCountries.length);
+            console.log('from SetRoundQuestions ', state.allCountries[randomIndex]);
+            
             newRoundCountries.push(state.allCountries[randomIndex]);
         }
         console.log(newRoundCountries, state.roundQuestions);

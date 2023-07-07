@@ -30,24 +30,33 @@ const getCountries = async (): Promise<Country[]> => {
         return [];
     }
 };
-
+const getCountriesFromLocal = () => {
+    const countriesFromLocalStorage = localStorage.getItem("countries");
+    if (countriesFromLocalStorage) {
+        const parsedCountries: Country[] = JSON.parse(
+            countriesFromLocalStorage
+        ) as Country[];
+        return parsedCountries;
+    }
+};
 function App() {
     const gameStatus = useCountryStore((state) => state.gameStatus);
     const setCountries = useCountryStore((state) => state.setCountries);
     const countries = useCountryStore((state) => state.allCountries);
+    const setRoundQuestion = useCountryStore((state) => state.setRoundQuestion);
     useEffect(() => {
         const fetchCountries = async (): Promise<void> => {
-            const countriesFromLocalStorage = localStorage.getItem("countries");
-            if (countriesFromLocalStorage) {
-                const parsedCountries: Country[] = JSON.parse(
-                    countriesFromLocalStorage
-                ) as Country[];
-                console.log(countriesFromLocalStorage);
-
+            const parsedCountries = getCountriesFromLocal();
+            if (Array.isArray(parsedCountries) && parsedCountries.length > 0) {
                 setCountries(parsedCountries);
+                setRoundQuestion();
             } else {
+                console.log("fetching data");
+
                 const fetchedCountries: Country[] = await getCountries();
                 setCountries(fetchedCountries);
+                setRoundQuestion();
+
                 localStorage.setItem(
                     "countries",
                     JSON.stringify(fetchedCountries)
@@ -72,7 +81,7 @@ function App() {
                 country quiz
             </h1>
             {countries.length == 0 ? (
-                <p>Loading</p>
+                <p>Loading The Main Board</p>
             ) : gameStatus == "playing" ? (
                 <Questions />
             ) : (
