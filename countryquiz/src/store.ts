@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { Country } from "./types";
+import { devtools } from "zustand/middleware";
 interface StoreType {
     allCountries: Country[]
     roundQuestions: Country[]
@@ -12,7 +13,7 @@ interface StoreType {
     setRoundQuestion: () => void
 }
 
-const useCountryStore = create<StoreType>(set => ({
+const useCountryStore = create<StoreType>()(devtools(set => ({
     allCountries: [],
     roundQuestions: [],
     gameStatus: 'playing',
@@ -38,6 +39,6 @@ const useCountryStore = create<StoreType>(set => ({
         
         return ({...state, roundQuestions: newRoundCountries})
     })
-}))
+})))
 
 export default useCountryStore
