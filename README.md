@@ -25,3 +25,6 @@ There are 8 challenges.
 - I should store the countries in local storage. 
 - 
 
+## 7 Weather 
+- No need to use react helmet and his sibling react helmet sibling with vite, JUST EDIT INDEX.HTML. 
+- 
