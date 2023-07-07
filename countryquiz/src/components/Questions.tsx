@@ -2,6 +2,7 @@ import useCountryStore from "../store";
 import { Country } from "../types";
 import SingleQuestion from "./SingleQuestion";
 import personImage from "../assets/undraw_adventure_4hum 1.svg";
+import QuestionType from "./QuestionType";
 export default function Questions() {
     const roundCountries: Country[] = useCountryStore(
         (state) => state.roundQuestions
@@ -20,7 +21,7 @@ export default function Questions() {
                 className="absolute right-0 top-0 translate-y-[-60%]"
             />
             <div className="mb-8 text-[#2F527B] sm:text-2xl font-bold">
-                <h3>{roundCountries[randomIndex].capital} is the capital of</h3>
+                <QuestionType country={roundCountries[randomIndex]} />
             </div>
             <div className="grid gap-6">
                 {roundCountries.map((country, i) => (

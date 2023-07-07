@@ -7,31 +7,54 @@ import axios from "axios";
 import { Helmet, HelmetData } from "react-helmet-async";
 
 const helmetData = new HelmetData({});
+const getCountries = async (): Promise<Country[]> => {
+    try {
+        const res = await axios.get<unknown[]>(
+            "https://restcountries.com/v3.1/all"
+        );
+        const unvalidatedData: unknown[] = res.data;
+
+        if (!Array.isArray(unvalidatedData)) return [];
+        const validatedCountries: Country[] = unvalidatedData.filter(isCountry);
+
+        const cleanCountries = validatedCountries.map((c) => ({
+            name: c.name.common,
+            capital: c.capital[0],
+            flag: c.flags.svg,
+        }));
+
+        return cleanCountries;
+    } catch (error) {
+        console.error("Failed to fetch countries:", error);
+        return [];
+    }
+};
+
 function App() {
     const gameStatus = useCountryStore((state) => state.gameStatus);
     const setCountries = useCountryStore((state) => state.setCountries);
     const setRoundQuestion = useCountryStore((state) => state.setRoundQuestion);
     const countries = useCountryStore((state) => state.allCountries);
     useEffect(() => {
-        const getCountries = async () => {
-            const res = await axios.get("https://restcountries.com/v3.1/all");
-            const unvalidatedData: unknown = res.data;
-
-            if (!Array.isArray(unvalidatedData)) return;
-            const validatedContries: Country[] =
-                unvalidatedData.filter(isCountry);
-
-            const cleanCountries = validatedContries.map((c) => ({
-                name: c.name.common,
-                capital: c.capital[0],
-                flag: c.flags.svg,
-            }));
-
-            setCountries(cleanCountries);
-            setRoundQuestion();
+        const fetchCountries = async (): Promise<void> => {
+            const countriesFromLocalStorage = localStorage.getItem("countries");
+            if (countriesFromLocalStorage) {
+                const parsedCountries: Country[] = JSON.parse(
+                    countriesFromLocalStorage
+                ) as Country[];
+                setCountries(parsedCountries);
+            } else {
+                const fetchedCountries: Country[] = await getCountries();
+                setCountries(fetchedCountries);
+                localStorage.setItem(
+                    "countries",
+                    JSON.stringify(fetchedCountries)
+                );
+            }
         };
+
         // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        getCountries();
+        fetchCountries();
     }, []);
 
     return (
