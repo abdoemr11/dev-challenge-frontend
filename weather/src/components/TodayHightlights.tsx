@@ -1,7 +1,7 @@
 import useFetchWeather from "../hooks/useFetchWeather";
 
 export default function TodayHighlights() {
-    const { weather, error, isLoading } = useFetchWeather();
+    const { weather, isLoading } = useFetchWeather();
 
     if (isLoading || !weather) return <p>Loading</p>;
 
