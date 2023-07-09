@@ -10,9 +10,9 @@ export default function TodayHighlights() {
     console.log(weather.wind.degree);
 
     return (
-        <section className="text-primary font-bold px-6 py-6 ">
-            <h2 className="text-2xl mb-8">Today’s Hightlights </h2>
-            <div className="flex flex-wrap gap-8">
+        <section className="text-primary font-bold  flex flex-col w-[90%] mx-auto">
+            <h2 className="text-2xl mb-8 ">Today’s Hightlights </h2>
+            <div className="flex flex-wrap gap-8 ">
                 <div className="bg-lightBlue pt-5 pb-9 flex flex-col items-center w-[20.5rem]">
                     <h2>Wind status</h2>
                     <div>

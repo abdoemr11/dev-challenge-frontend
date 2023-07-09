@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import {ApiData, Weather, getWeatherFromApi} from '../types';
+import {ApiData, SummaryWeaher, Weather, getForecastFromApi, getWeatherFromApi} from '../types';
 import { useState } from "react";
 import { validateWeather } from '../validate';
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
@@ -11,12 +11,15 @@ export default function useFetchWeather() {
 
 
     const [weather, setWeather] = useState<Weather | null>(null);
+    const [futureWeather, setfutureWeather] = useState<SummaryWeaher[] | null>(null);
 
-    if (!isLoading && !weather&&validateWeather(weatherData)) {
+    if (!isLoading && !weather &&!futureWeather&&validateWeather(weatherData)) {
         setWeather(getWeatherFromApi(weatherData as ApiData));
+        setfutureWeather(getForecastFromApi(weatherData as ApiData));
     } else {
         console.log(validateWeather.errors);
     }
+
  
-    return ( { weather, error, isLoading })
+    return ( { weather, futureWeather,error, isLoading })
 }

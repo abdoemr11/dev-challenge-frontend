@@ -24,6 +24,23 @@ export interface Weather {
     airPressure: number
 
 }
+export interface SummaryWeaher {
+    date: string
+    temp: {
+        F: {
+            max: number
+            min: number
+        }
+        C: {
+            max: number
+            min: number
+        }
+    }
+    condition: {
+        text: string
+        icon: string
+    }
+}
 export interface ApiData {
     location: {
         name: string
@@ -48,6 +65,22 @@ export interface ApiData {
         vis_km: number;
         vis_miles: number;
 
+    }
+    forecast: {
+        forecastday: {
+            date: string
+            day: {
+                maxtemp_c: number,
+                maxtemp_f: number,
+                mintemp_c: number,
+                mintemp_f: number,
+                condition: {
+                    text: string;
+                    icon: string;
+                    code: number;
+                  }
+            }
+        }[]
     }
 }
 export const getWeatherFromApi = (data: ApiData): Weather =>{
@@ -76,6 +109,26 @@ export const getWeatherFromApi = (data: ApiData): Weather =>{
         airPressure: data.current.pressure_mb
 
     }
-
     return currentDay
+}
+
+export const getForecastFromApi = (data: ApiData): SummaryWeaher[] => {
+    const nexDays: SummaryWeaher[] = data.forecast.forecastday.map(day => ({
+        date: day.date,
+        temp: {
+            F: {
+                max: day.day.maxtemp_f,
+                min: day.day.mintemp_f
+            },
+            C: {
+                max: day.day.maxtemp_c,
+                min: day.day.mintemp_c,
+            }
+        },
+        condition: {
+            text: day.day.condition.text,
+            icon: day.day.condition.icon,
+        }
+    })) 
+return nexDays
 }

@@ -1,10 +1,10 @@
 import cloudback from "../assets/Cloud-background.png";
 import useFetchWeather from "../hooks/useFetchWeather";
+import { toDateFormat } from "../utils";
 
 export default function TodayWeatherSummary() {
     const { weather, error, isLoading } = useFetchWeather();
-    console.log(weather);
-
+    3;
     if (isLoading || !weather) return <p>Loading</p>;
     return (
         <section className="bg-lightBlue text-primary pb-12 sm:basis-1/3">
@@ -55,14 +55,3 @@ export default function TodayWeatherSummary() {
         </section>
     );
 }
-
-const toDateFormat = (dateStr: string) => {
-    const date = new Date(dateStr);
-
-    const formattedDate = date.toLocaleString("en-US", {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-    });
-    return formattedDate;
-};
