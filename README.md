@@ -27,4 +27,4 @@ There are 8 challenges.
 
 ## 7 Weather 
 - No need to use react helmet and his sibling react helmet sibling with vite, JUST EDIT INDEX.HTML. 
-- 
+- I get the city data from geonames and converted it to json format. This will enable me to search for city. 

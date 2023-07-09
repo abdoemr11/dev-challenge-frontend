@@ -2,9 +2,7 @@ import useFetchWeather from "../hooks/useFetchWeather";
 import { toDateFormat } from "../utils";
 
 export default function FutureForecast() {
-    const { futureWeather, error, isLoading } = useFetchWeather();
-    console.log(futureWeather);
-
+    const { futureWeather, isLoading } = useFetchWeather();
     if (isLoading || !futureWeather) return <p>Loading</p>;
     return (
         <div className="flex flex-wrap gap-x-6 gap-y-8 justify-center">

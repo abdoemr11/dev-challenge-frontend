@@ -41,6 +41,15 @@ export interface SummaryWeaher {
         icon: string
     }
 }
+export interface City {
+      
+  id: string;
+  name: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+ 
+}
 export interface ApiData {
     location: {
         name: string

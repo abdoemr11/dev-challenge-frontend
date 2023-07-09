@@ -1,13 +1,9 @@
 import useFetchWeather from "../hooks/useFetchWeather";
-import { Weather, getWeatherFromApi } from "../types";
-import { validateWeather } from "../validate";
 
 export default function TodayHighlights() {
     const { weather, error, isLoading } = useFetchWeather();
-    console.log(weather);
 
     if (isLoading || !weather) return <p>Loading</p>;
-    console.log(weather.wind.degree);
 
     return (
         <section className="text-primary font-bold  flex flex-col w-[90%] mx-auto">
