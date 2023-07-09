@@ -1,11 +1,9 @@
 import cloudback from "../assets/Cloud-background.png";
-import currentWeather from "../assets/HeavyCloud.png";
-import useSWR from "swr";
-import { Weather, getWeatherFromApi, isValidApiData } from "../types";
 import useFetchWeather from "../hooks/useFetchWeather";
 
 export default function TodayWeatherSummary() {
     const { weather, error, isLoading } = useFetchWeather();
+    console.log(weather);
 
     if (isLoading || !weather) return <p>Loading</p>;
     return (
